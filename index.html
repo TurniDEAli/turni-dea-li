@@ -11,6 +11,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="turni iDEAli">
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' rx='9' fill='%231A6FD1'/%3E%3Cpath d='M5 16h5l2.2-5 3.6 10 2.4-6.5 1.3 1.5H25' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <title>turni iDEAli</title>
 <style>
@@ -750,6 +753,8 @@ tr.row:hover td{background:var(--hol)}
   @page{size:A4;margin:10mm}
 }
 
+.provabadge{display:inline-block;margin:12px 0 2px;font-size:12px;font-weight:700;color:#8A5A00;background:#FFF1CC;border-radius:10px;padding:5px 10px}
+
 html,body{height:100%}
 body{overflow:hidden;overscroll-behavior:none}
 #app{position:fixed;inset:0}
@@ -759,6 +764,85 @@ body{overflow:hidden;overscroll-behavior:none}
 .app.wide .scroll{padding-left:28px;padding-right:28px}
 .app.wide.has-hero .hero{height:340px}
 .app.wide .sheet{position:fixed}
+
+/* ================= versione morbida: tinte tenui, forme arrotondate ================= */
+:root{
+  --font:ui-rounded,"SF Pro Rounded","Nunito",-apple-system,BlinkMacSystemFont,"Inter",system-ui,"Segoe UI",Roboto,sans-serif;
+  --accent:#4F8FE0; --accent-ink:#fff; --accent-soft:rgba(79,143,224,.10); --accent-soft2:rgba(79,143,224,.18);
+  --bg:#F5F8FC; --card:rgba(255,255,255,.86); --card-solid:#fff; --line:rgba(40,70,120,.08); --line2:rgba(40,70,120,.13);
+  --text:#22304A; --text2:#6B7790; --text3:#9AA4B6;
+  --ok:#52B38E; --danger:#D9837F; --hol:rgba(79,143,224,.06);
+  --m:#F2B56B; --p:#62C3B5; --n:#9A9CEB; --r:#A8B0BD;
+  --shadow:0 1px 2px rgba(40,70,120,.04),0 10px 30px rgba(40,70,120,.07);
+  --radius:26px;
+  --spring:cubic-bezier(.25,1.15,.4,1);
+}
+:root[data-theme="dark"]{--accent:#7AAEF0;--bg:#0E131C;--card:rgba(30,36,48,.88);--card-solid:#1C2230;--text:#EEF2F8;--text2:#A9B3C4;--text3:#76808F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#7AAEF0;--accent-soft:rgba(122,174,240,.14);--accent-soft2:rgba(122,174,240,.24);--bg:#0E131C;--card:rgba(30,36,48,.88);--card-solid:#1C2230;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);--text:#EEF2F8;--text2:#A9B3C4;--text3:#76808F;--hol:rgba(122,174,240,.08)}}
+body{letter-spacing:.003em}
+body::before{background:radial-gradient(42vmax 42vmax at 6% 0%,rgba(79,143,224,.13),transparent 62%),radial-gradient(38vmax 38vmax at 100% 30%,rgba(98,195,181,.10),transparent 62%),radial-gradient(46vmax 46vmax at 40% 110%,rgba(154,156,235,.10),transparent 62%)}
+/* temi delle feste più tenui */
+.app[data-tema="natale"],.tema-natale{--accent:#CF6A6E;--accent-soft:rgba(207,106,110,.10);--accent-soft2:rgba(207,106,110,.18);--hol:rgba(207,106,110,.06);--gold:#D2A84E}
+.app[data-tema="pasqua"],.tema-pasqua{--accent:#5DAE86;--accent-soft:rgba(93,174,134,.11);--accent-soft2:rgba(93,174,134,.20);--hol:rgba(93,174,134,.07);--gold:#B9C46A}
+.app[data-tema="estate"],.tema-estate{--accent:#3FA6CC;--accent-soft:rgba(63,166,204,.11);--accent-soft2:rgba(63,166,204,.20);--hol:rgba(63,166,204,.07);--gold:#E9B24E}
+/* titoli più leggeri e rotondi */
+.h1{font-weight:700;letter-spacing:-.015em}
+.h2{font-weight:700;letter-spacing:-.01em}
+.wm{font-weight:750;letter-spacing:-.02em}
+.sp-word{font-weight:750;letter-spacing:-.02em}
+.btn{border-radius:22px;font-weight:600;box-shadow:0 6px 18px rgba(79,143,224,.22)}
+.btn.ghost{box-shadow:none}
+.app[data-tema] .btn{box-shadow:0 6px 18px var(--accent-soft2)}
+.card,.fact,.days,.ucal,.mchip{border-radius:24px}
+.pill{border-radius:16px;font-weight:650}
+.ucell{border-radius:14px}
+.mhead h2{font-weight:700;letter-spacing:-.015em}
+.gb{font-weight:700}
+.kpi b{font-weight:700}
+.sw[aria-checked="true"]{background:var(--ok)}
+.codein.bad{border-color:var(--danger)}
+.codemsg.bad{color:var(--danger)}
+.shake{animation:wiggle .5s ease}
+@keyframes wiggle{20%{transform:translateX(-5px) rotate(-1deg)}40%{transform:translateX(5px) rotate(1deg)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
+.toast{background:#3A4660}
+.tour-hole{box-shadow:0 0 0 9999px rgba(20,30,50,.45),0 0 0 3px rgba(255,255,255,.9)}
+.tour-tip{border-radius:24px}
+.tt-next{border-radius:16px}
+/* conferma con il cuore */
+.ecg path{stroke:var(--accent);stroke-dasharray:700;stroke-dashoffset:700;animation:draw 1.8s .15s cubic-bezier(.65,0,.35,1) forwards}
+.ecg circle{fill:var(--accent)}
+.heartbeat{animation:hb 1.6s 1.6s ease-in-out infinite;transform-origin:170px 52px}
+@keyframes hb{0%,40%,100%{transform:scale(1)}12%{transform:scale(1.08)}24%{transform:scale(1.03)}}
+/* gestione morbida */
+.cc3{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;padding:9px 9px 10px;min-height:92px;min-width:0;text-align:left;display:flex;flex-direction:column;gap:4px;animation:enter .45s var(--spring) both;transition:transform .2s var(--spring);background:var(--card-solid)}
+.cc3:hover{transform:translateY(-2px)}
+.cc3.sel{outline:2.5px solid var(--accent);outline-offset:-1px}
+.cc3 .dn{display:flex;align-items:center;justify-content:space-between}.cc3 .dn b{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.cc3 .hn{font-size:10.5px;font-weight:700;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:-2px}
+.cc3.fest .dn b{color:var(--accent)}
+.cc3 .chips3{margin-top:auto;display:flex;flex-wrap:wrap;gap:3px}
+.cc3 .chips3 span{font-size:11px;font-weight:700;color:#fff;border-radius:8px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.cc3 .need{font-size:10.5px;font-weight:650;color:var(--text2)}
+.cc3 .need.ok{color:var(--ok)}
+.tot3{position:absolute;right:8px;top:9px;font-size:11px;font-weight:700;color:var(--text3)}
+.soft-tile{border:1px solid var(--line);border-radius:18px;background:var(--card-solid);overflow:hidden}
+.soft-tile summary{list-style:none;display:flex;align-items:center;gap:10px;padding:11px 12px;cursor:pointer}
+.soft-tile summary::-webkit-details-marker{display:none}
+.soft-tile .tn b{font-size:22px;font-weight:700}
+.soft-tile .tw2{margin-left:auto;font-size:12px;font-weight:650;color:var(--text2);background:var(--bg);border-radius:10px;padding:3px 9px}
+.soft-tile .tw2.ok{color:var(--ok);background:rgba(82,179,142,.12)}
+.soft-tile .plist{padding:0 12px 8px;max-height:220px}
+.toplist li{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.toplist li:first-child{border-top:0}
+.toplist button{all:unset;display:flex;align-items:center;gap:10px;width:100%;cursor:pointer;min-height:40px}
+.toplist .bar3{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}.toplist .bar3 i{display:block;height:100%;background:var(--accent);border-radius:4px;opacity:.6}
+.heart-ill{font-size:40px;color:var(--accent);text-align:center;padding:14px 0}
+.linkcards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.linkcards button{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px 16px;text-align:left;display:flex;align-items:center;gap:12px;min-height:56px}
+.linkcards button b{display:block;font-size:15px}.linkcards button small{color:var(--text2);font-size:12.5px}
+.linkcards .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);flex:none}
+@container desk (max-width:760px){.linkcards{grid-template-columns:1fr}.cc3{min-height:58px;padding:5px 4px 6px;border-radius:12px}.cc3 .dn b{font-size:14px}.cc3 .hn,.tot3,.cc3 .need{display:none}.cc3 .chips3 span{font-size:9px;padding:0 3px;border-radius:5px}}
+.cc3>*{flex-shrink:0}.cc3 .hn{margin-top:0;line-height:1.25}
 
 </style>
 </head>
@@ -839,21 +923,21 @@ const SND={on:true,ctx:null,
   play(kind,x){if(!this.on)return;try{const c=this.c();const t=c.currentTime+.01;
    const B=(f,d,dur,v)=>this.tone(f,t+d,dur||.07,v||.06,'sine');
    switch(kind){
-    case 'tap':B(1500,0,.03,.03);break;
-    case 'beep':{const f=700+Math.min(x||0,14)*28;B(f,0,.085,.07);break}            // bip da saturimetro, sale con le preferenze
-    case 'desel':B(820,0,.05,.05);B(620,.06,.06,.04);break;
-    case 'connect':B(988,0,.06,.06);B(1319,.09,.09,.06);break;                         // "monitor collegato"
-    case 'err':this.tone(330,t,.12,.05,'triangle');this.tone(262,t+.15,.16,.05,'triangle');break;
-    case 'drop':B(620,0,.05,.05);break;
-    case 'alarm':[0,.22,.44].forEach((d,i)=>this.tone([523.25,659.25,783.99][i],t+d,.17,.05,'square'));break;            // allarme a priorità media
-    case 'alarmHi':[0,.12,.24,.52,.64].forEach((d,i)=>this.tone([523.25,659.25,783.99,659.25,783.99][i],t+d,.1,.045,'square'));break; // allarme a priorità alta
-    case 'sheet':this.tone(500,t,.14,.03,'sine',900);break;
-    case 'whoosh':this.tone(300,t,.18,.02,'sine',700);break;
-    case 'charge':this.tone(260,t,.95,.035,'sine',2200);this.tone(130,t,.95,.012,'triangle',1100);break; // carica del defibrillatore
-    case 'shock':this.tone(90,t,.18,.12,'sine',40);this.tone(2400,t,.05,.02,'square');break;
-    case 'ok':[1046.5,1318.5,1568,2093].forEach((f,i)=>this.tone(f,t+i*.08,.45+i*.1,.055,'sine'));break;
-    case 'sinus':[0,.62,1.24].forEach(d=>B(880,d,.08,.06));break;                         // tre battiti
-    case 'on':B(880,.75,.09,.06);B(880,1.35,.09,.05);[523.25,784,1046.5].forEach((f,i)=>this.tone(f,t+1.55+i*.1,.8,.04,'sine'));break;
+    case 'tap':B(1320,0,.03,.02);break;
+    case 'beep':{const f=660+Math.min(x||0,14)*22;B(f,0,.09,.045);break}            // bip morbido da monitor, sale con le scelte
+    case 'desel':B(700,0,.06,.03);B(560,.07,.07,.025);break;
+    case 'connect':B(880,0,.07,.04);B(1175,.1,.1,.04);break;
+    case 'err':B(440,0,.12,.035);B(392,.14,.16,.03);break;
+    case 'drop':B(587,0,.05,.03);break;
+    case 'alarm':B(523.25,0,.14,.03);B(659.25,.16,.2,.03);break;                     // promemoria gentile, non un allarme
+    case 'alarmHi':B(392,0,.14,.035);B(349.2,.16,.22,.03);break;                    // «riprova», tono basso e breve
+    case 'sheet':this.tone(520,t,.16,.02,'sine',780);break;
+    case 'whoosh':this.tone(340,t,.2,.012,'sine',620);break;
+    case 'charge':this.tone(330,t,.9,.018,'sine',1320);break;                       // carica, sottovoce
+    case 'shock':this.tone(196,t,.25,.05,'sine',130);break;
+    case 'ok':[784,987.8,1174.7,1568].forEach((f,i)=>this.tone(f,t+i*.09,.5+i*.12,.035,'sine'));break;
+    case 'sinus':[0,.62,1.24].forEach(d=>B(784,d,.09,.04));break;                         // tre battiti
+    case 'on':B(784,.75,.1,.04);B(784,1.35,.1,.035);[523.25,659.25,784].forEach((f,i)=>this.tone(f,t+1.55+i*.12,.9,.028,'sine'));break;
    }}catch(e){}}};
 try{SND.on=localStorage.getItem('tdl-snd')!=='0'}catch(e){}
 const ICO_SND=on=>on?'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg>':'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
@@ -862,7 +946,7 @@ function say(t){const l=document.getElementById('live');l.textContent='';setTime
 const RM=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function rip(el){if(RM()||!el)return;const r=document.createElement('i');r.className='ripple';el.appendChild(r);setTimeout(()=>r.remove(),600)}
 /* ================= vibrazione ================= */
-const VIB={tap:6,beep:10,connect:[10,40,10],desel:8,drop:6,sheet:8,alarm:[80,60,80,60,80],alarmHi:[60,40,60,40,120],shock:45,ok:[15,40,15,40,30],charge:[20,80,20,80,20]};
+const VIB={tap:5,beep:8,connect:[8,40,8],desel:6,drop:5,sheet:6,alarm:[20,60,20],alarmHi:[30,50,30],shock:25,ok:[10,40,10,40,18],charge:[8,90,8]};
 function vib(k){if(!SND.on)return;const p=VIB[k];if(!p)return;try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
 (function(){const orig=SND.play.bind(SND);SND.play=function(k,x){vib(k);return orig(k,x)}})();
 
@@ -911,6 +995,7 @@ const IC_NEED='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" strok
 const IC_MORE='<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>';
 const IC_HELP='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/></svg>';
 const IC_REFRESH='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/></svg>';
+const IC_HEART='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.5C6 16.3 3 13 3 9.2 3 6.6 5 4.6 7.5 4.6c1.8 0 3.3 1 4.5 2.6 1.2-1.6 2.7-2.6 4.5-2.6C19 4.6 21 6.6 21 9.2c0 3.8-3 7.1-9 11.3z"/></svg>';
 
 /* ================= impronte dei codici ================= */
 const ALF='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
@@ -1010,7 +1095,9 @@ async function backendFirebase(cfg){
     salvaTotale:(mese,n)=>T(()=>F.setDoc(d('raccolte',mese,'pubblico','totale'),{totale:n,agg:F.serverTimestamp()}))
   }}
 
-async function apriBackend(){const cfg=window.TDL_CONFIG||{};const f=cfg.firebase||{};
+/* con ?prova nell'indirizzo il sito funziona in prova anche se Firebase è configurato: i dati restano nel browser */
+const IN_PROVA=/[?&]prova(=|&|$)/.test(location.search);
+async function apriBackend(){const cfg=window.TDL_CONFIG||{};const f=cfg.firebase||{};if(IN_PROVA)return backendProva();
   if(f.apiKey&&f.projectId&&!/INCOLLA/.test(f.apiKey))return backendFirebase(cfg);return backendProva()}
 
 /* ================= Excel: scrittura e lettura senza librerie esterne ================= */
@@ -1098,13 +1185,14 @@ function vBenvenuto(st){const r=R(st.mese);const c=countdown(r.chiusura);const T
   <div class="hero">${r.tema!=='standard'?'<div class="tint"></div>'+motivo(r.tema):''}${r.tema==='natale'?'<div class="snow" aria-hidden="true">'+Array.from({length:18},(_,i)=>`<i style="left:${(i*53)%100}%;animation-delay:${(i*0.7)%6}s;animation-duration:${7+(i%5)}s"></i>`).join('')+'</div>':''}<img src="${IMG.hero}" alt="La sala del pronto soccorso con le barelle pronte">
    <button class="back hero-help" data-a="aiuto" aria-label="Guida">${IC_HELP}</button><button class="back hero-snd" data-a="suono" aria-label="${SND.on?'Disattiva i suoni':'Attiva i suoni'}" aria-pressed="${SND.on}">${ICO_SND(SND.on)}</button>
    <div class="wordmark"><span class="hb">${LOGO.replace('width="22" height="22"','width="46" height="46"')}</span><div><div class="wm">turni i<b>DEA</b>li</div><div class="wms">Disponibilità di turno · ${esc(REPARTO)}</div></div></div></div>
+  ${BACK&&BACK.modo==='prova'?'<div class="provabadge">Modalità prova · i dati restano su questo telefono</div>':''}
   ${T.ey?`<div class="eyebrow"><i></i>${T.ey}</div>`:''}
   <h1 class="h1">Le tue disponibilità</h1>
-  <p class="lead">I turni che potresti lavorare al posto dell'aspettativa.</p>
+  <p class="lead">Se ti va, indica i turni che potresti fare al posto dell'aspettativa. Ogni aiuto è prezioso.</p>
   <div class="months" role="group" aria-label="Mese">
    ${RACCOLTE.map(x=>{const cc=countdown(x.chiusura);return `<button class="mchip ${x.tema!=='standard'?'tema-'+x.tema:''}" data-a="mese" data-k="${x.key}" aria-pressed="${x.key===st.mese}"><b>${labMese(x.key)}</b><span>chiude tra ${cc.g} g</span>${x.tema!=='standard'?`<br><span class="tag">${TEMI[x.tema].nome}</span>`:x.nfest?`<br><span class="tag">${x.nfest} festiv${x.nfest>1?'i':'o'}</span>`:''}</button>`}).join('')}
   </div>
-  ${r.critico?`<div class="critico">${STELLA}<span><b>Mese di feste.</b> Ogni turno offerto conta.</span></div>`:''}
+  ${r.critico?`<div class="critico">${STELLA}<span><b>Mese di feste.</b> Grazie per ogni turno che vorrai offrire.</span></div>`:''}
   <div class="facts">
    <div class="fact"><small>Periodo</small><b>1 → ${giorniMese(r.key).length} ${MESI[+r.key.slice(5)-1]}</b></div>
    <div class="fact"><small>Scadenza</small><b>${r.chiusura.getDate()} ${MESI[r.chiusura.getMonth()].slice(0,3)}, ${pad(r.chiusura.getHours())}:${pad(r.chiusura.getMinutes())}</b></div>
@@ -1117,11 +1205,11 @@ function vCodice(st){const f=st.codice;const shown=f.length>3?f.slice(0,3)+'-'+f
   let msg='';
   if(st.verifica==='wait')msg='<span class="spin"></span>&nbsp; Verifica in corso';
   else if(st.verifica==='ok')msg=`<span class="badge pop-in">${I.check} Codice valido · ${st.figura==='INF'?'Infermiere':'OSS'}</span>`;
-  else if(st.verifica==='bad')msg='Codice non riconosciuto. Controlla il bigliettino personale.';
+  else if(st.verifica==='bad')msg='Non trovo questo codice. Ricontrolla il bigliettino, con calma.';
   else msg='Sei caratteri, li trovi sul bigliettino personale.';
   return `<div class="view stg narrow">
   <h1 class="h1">Il tuo codice</h1>
-  <p class="lead">Personale e anonimo.</p>
+  <p class="lead">Lo trovi sul tuo bigliettino. È anonimo.</p>
   <div class="codebox"><label for="codein" class="sr">Codice personale</label>
    <input id="codein" class="codein ${st.verifica==='ok'?'ok':st.verifica==='bad'?'bad':''}" value="${shown}" inputmode="text" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" maxlength="7" placeholder="•••-•••" aria-describedby="codemsg"></div>
   <div id="codemsg" class="codemsg ${st.verifica==='bad'?'bad':''}" role="status">${msg}</div>
@@ -1144,7 +1232,7 @@ function vPanelClass(st){const lv=livelli(st);
 
 function vScelta(st,wide){
   const head=`<h1 class="h2">${labMese(st.mese)}</h1>
-   <p class="lead" style="margin-bottom:10px">Tocca un giorno e scegli i turni che potresti lavorare.</p>
+   <p class="lead" style="margin-bottom:10px">Tocca un giorno e scegli i turni che ti andrebbe di fare.</p>
    <div class="legend"><span><i style="background:var(--m)"></i>M 7-13</span><span><i style="background:var(--p)"></i>P 13-19:40</span><span><i style="background:var(--n)"></i>N 19:40-7</span><span><i style="background:var(--accent-soft2)"></i>festivo</span></div>`;
   if(wide)return `<div class="view stg"><div class="wide2"><div>${head}${vGriglia(st)}</div>${vPanelClass(st)}</div></div>`;
   return `<div class="view stg">${head}${vGriglia(st)}</div>`}
@@ -1174,7 +1262,7 @@ function vOrdine(st){const lv=livelli(st);
     </div></li>`}).join('');
   return `<div class="view stg narrow">
    <h1 class="h1">Ordina i turni</h1>
-   <p class="lead">In alto ciò che preferisci.</p>
+   <p class="lead">In alto quelli che preferisci.</p>
    <div class="tip"><span class="link on" style="position:static;width:auto;height:auto" aria-hidden="true"><span>=</span></span><span>«=» mette due voci alla pari. Scorri a sinistra per eliminare.</span></div>
    ${st.voci.length?`<ul class="olist" id="olist" aria-label="Classifica">${list}</ul>`:'<div class="empty">Nessun turno. Torna indietro e scegli dal calendario.</div>'}
    ${chipsExtra(st)}
@@ -1190,7 +1278,7 @@ function vInvio(st){const r=R(st.mese);const lv=livelli(st);const max=nTurni(st)
    <label class="lab" for="nota">Nota <span>facoltativa</span></label>
    <textarea id="nota" class="nota" maxlength="200" placeholder="Per esempio: preferisco turni non consecutivi">${esc(st.nota)}</textarea>
    <div class="cnt"><span id="ncnt">${st.nota.length}</span>/200</div>
-   <p class="small">Niente motivi personali o dati sanitari.</p>
+   <p class="small">Non serve spiegare motivi personali.</p>
   </div>`}
 
 function badgeRow(st){const fe=st.voci.filter(v=>isFest(v.g)).length,nn=st.voci.filter(v=>v.t==='N').length,pm=st.voci.some(v=>v.pari);
@@ -1199,9 +1287,9 @@ function badgeRow(st){const fe=st.voci.filter(v=>isFest(v.g)).length,nn=st.voci.
 function vConferma(st){const r=R(st.mese);const t=st.inviata||new Date();
   return `<div class="view done narrow">
    <div class="burst" aria-hidden="true">${Array.from({length:10},(_,i)=>`<i style="--a:${i*36}deg;--c:${['var(--accent)','var(--m)','var(--p)','var(--n)','var(--ok)'][i%5]}"></i>`).join('')}</div>
-   <svg class="ecg" viewBox="0 0 220 110" aria-hidden="true"><circle cx="150" cy="55" r="52"/><path d="M6 62h44l9-22 13 40 10-30 6 12h24l14 14 26-34"/></svg>
-   <h1 class="h1" style="font-size:28px">Disponibilità registrate</h1>
-   <p class="lead" style="margin:0 8px">Grazie!</p>
+   <svg class="ecg" viewBox="0 0 220 110" aria-hidden="true"><circle cx="170" cy="52" r="40"/><g class="heartbeat"><path d="M6 62h40l8-20 11 36 9-28 6 12h22l6-6 6 6h12L170 78C150 64 144 50 153 41c8-8 17-2 17 6 0-8 9-14 17-6 9 9 3 23-17 37"/></g></svg>
+   <h1 class="h1" style="font-size:28px">Grazie di cuore</h1>
+   <p class="lead" style="margin:0 8px">Le tue disponibilità sono state registrate.</p>
    ${badgeRow(st)}
    <div class="card receipt">
     <div class="r"><span>Raccolta</span><b>${labMese(r.key)}</b></div>
@@ -1238,7 +1326,7 @@ function avviaSplash(){S.boot=true;draw(false);SND.play('on');if(RM()){S.boot=fa
 function dopoSplash(){if(!TOUR.seen.onb){S.onb=0}draw(false);if(S.onb==null)setTimeout(()=>tourCollega(),500)}
 async function verifica(){S.verifica='wait';draw(true);let f=null,h=null;
   try{h=await impronta(IMPO.sale,S.codice);const c=await BACK.codice(h);if(c&&c.attivo===true&&(c.figura==='INF'||c.figura==='OSS'))f=c.figura}catch(e){S.verifica=null;draw(true);errore(e.message);return}
-  {if(f){S.verifica='ok';S.figura=f;S.h=h;draw(true);SND.play('connect');say('Codice valido')}else{S.verifica='bad';draw(true);SND.play('alarmHi');const c=root.querySelector('#codein');c.classList.add('shake');c.focus();say('Codice non riconosciuto')}}}
+  {if(f){S.verifica='ok';S.figura=f;S.h=h;draw(true);SND.play('connect');say('Codice valido')}else{S.verifica='bad';draw(true);SND.play('err');const c=root.querySelector('#codein');c.classList.add('shake');c.focus();say('Codice non riconosciuto')}}}
 
 function bindCollega(){
   const c=root.querySelector('#codein');

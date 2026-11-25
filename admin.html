@@ -11,6 +11,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="turni iDEAli">
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' rx='9' fill='%231A6FD1'/%3E%3Cpath d='M5 16h5l2.2-5 3.6 10 2.4-6.5 1.3 1.5H25' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <title>turni iDEAli · Gestione</title>
 <style>
@@ -750,6 +753,8 @@ tr.row:hover td{background:var(--hol)}
   @page{size:A4;margin:10mm}
 }
 
+.provabadge{display:inline-block;margin:12px 0 2px;font-size:12px;font-weight:700;color:#8A5A00;background:#FFF1CC;border-radius:10px;padding:5px 10px}
+
 body{background:var(--bg)}
 .desk{max-width:none;margin:0;border:0;border-radius:0;box-shadow:none;overflow:visible;min-height:100vh}
 .desk::before{position:fixed}
@@ -761,6 +766,85 @@ body{background:var(--bg)}
   .main{padding-top:calc(20px + env(safe-area-inset-top))}
   .login{min-height:100vh}
 }
+
+/* ================= versione morbida: tinte tenui, forme arrotondate ================= */
+:root{
+  --font:ui-rounded,"SF Pro Rounded","Nunito",-apple-system,BlinkMacSystemFont,"Inter",system-ui,"Segoe UI",Roboto,sans-serif;
+  --accent:#4F8FE0; --accent-ink:#fff; --accent-soft:rgba(79,143,224,.10); --accent-soft2:rgba(79,143,224,.18);
+  --bg:#F5F8FC; --card:rgba(255,255,255,.86); --card-solid:#fff; --line:rgba(40,70,120,.08); --line2:rgba(40,70,120,.13);
+  --text:#22304A; --text2:#6B7790; --text3:#9AA4B6;
+  --ok:#52B38E; --danger:#D9837F; --hol:rgba(79,143,224,.06);
+  --m:#F2B56B; --p:#62C3B5; --n:#9A9CEB; --r:#A8B0BD;
+  --shadow:0 1px 2px rgba(40,70,120,.04),0 10px 30px rgba(40,70,120,.07);
+  --radius:26px;
+  --spring:cubic-bezier(.25,1.15,.4,1);
+}
+:root[data-theme="dark"]{--accent:#7AAEF0;--bg:#0E131C;--card:rgba(30,36,48,.88);--card-solid:#1C2230;--text:#EEF2F8;--text2:#A9B3C4;--text3:#76808F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#7AAEF0;--accent-soft:rgba(122,174,240,.14);--accent-soft2:rgba(122,174,240,.24);--bg:#0E131C;--card:rgba(30,36,48,.88);--card-solid:#1C2230;--line:rgba(255,255,255,.07);--line2:rgba(255,255,255,.12);--text:#EEF2F8;--text2:#A9B3C4;--text3:#76808F;--hol:rgba(122,174,240,.08)}}
+body{letter-spacing:.003em}
+body::before{background:radial-gradient(42vmax 42vmax at 6% 0%,rgba(79,143,224,.13),transparent 62%),radial-gradient(38vmax 38vmax at 100% 30%,rgba(98,195,181,.10),transparent 62%),radial-gradient(46vmax 46vmax at 40% 110%,rgba(154,156,235,.10),transparent 62%)}
+/* temi delle feste più tenui */
+.app[data-tema="natale"],.tema-natale{--accent:#CF6A6E;--accent-soft:rgba(207,106,110,.10);--accent-soft2:rgba(207,106,110,.18);--hol:rgba(207,106,110,.06);--gold:#D2A84E}
+.app[data-tema="pasqua"],.tema-pasqua{--accent:#5DAE86;--accent-soft:rgba(93,174,134,.11);--accent-soft2:rgba(93,174,134,.20);--hol:rgba(93,174,134,.07);--gold:#B9C46A}
+.app[data-tema="estate"],.tema-estate{--accent:#3FA6CC;--accent-soft:rgba(63,166,204,.11);--accent-soft2:rgba(63,166,204,.20);--hol:rgba(63,166,204,.07);--gold:#E9B24E}
+/* titoli più leggeri e rotondi */
+.h1{font-weight:700;letter-spacing:-.015em}
+.h2{font-weight:700;letter-spacing:-.01em}
+.wm{font-weight:750;letter-spacing:-.02em}
+.sp-word{font-weight:750;letter-spacing:-.02em}
+.btn{border-radius:22px;font-weight:600;box-shadow:0 6px 18px rgba(79,143,224,.22)}
+.btn.ghost{box-shadow:none}
+.app[data-tema] .btn{box-shadow:0 6px 18px var(--accent-soft2)}
+.card,.fact,.days,.ucal,.mchip{border-radius:24px}
+.pill{border-radius:16px;font-weight:650}
+.ucell{border-radius:14px}
+.mhead h2{font-weight:700;letter-spacing:-.015em}
+.gb{font-weight:700}
+.kpi b{font-weight:700}
+.sw[aria-checked="true"]{background:var(--ok)}
+.codein.bad{border-color:var(--danger)}
+.codemsg.bad{color:var(--danger)}
+.shake{animation:wiggle .5s ease}
+@keyframes wiggle{20%{transform:translateX(-5px) rotate(-1deg)}40%{transform:translateX(5px) rotate(1deg)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
+.toast{background:#3A4660}
+.tour-hole{box-shadow:0 0 0 9999px rgba(20,30,50,.45),0 0 0 3px rgba(255,255,255,.9)}
+.tour-tip{border-radius:24px}
+.tt-next{border-radius:16px}
+/* conferma con il cuore */
+.ecg path{stroke:var(--accent);stroke-dasharray:700;stroke-dashoffset:700;animation:draw 1.8s .15s cubic-bezier(.65,0,.35,1) forwards}
+.ecg circle{fill:var(--accent)}
+.heartbeat{animation:hb 1.6s 1.6s ease-in-out infinite;transform-origin:170px 52px}
+@keyframes hb{0%,40%,100%{transform:scale(1)}12%{transform:scale(1.08)}24%{transform:scale(1.03)}}
+/* gestione morbida */
+.cc3{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;padding:9px 9px 10px;min-height:92px;min-width:0;text-align:left;display:flex;flex-direction:column;gap:4px;animation:enter .45s var(--spring) both;transition:transform .2s var(--spring);background:var(--card-solid)}
+.cc3:hover{transform:translateY(-2px)}
+.cc3.sel{outline:2.5px solid var(--accent);outline-offset:-1px}
+.cc3 .dn{display:flex;align-items:center;justify-content:space-between}.cc3 .dn b{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.cc3 .hn{font-size:10.5px;font-weight:700;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:-2px}
+.cc3.fest .dn b{color:var(--accent)}
+.cc3 .chips3{margin-top:auto;display:flex;flex-wrap:wrap;gap:3px}
+.cc3 .chips3 span{font-size:11px;font-weight:700;color:#fff;border-radius:8px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.cc3 .need{font-size:10.5px;font-weight:650;color:var(--text2)}
+.cc3 .need.ok{color:var(--ok)}
+.tot3{position:absolute;right:8px;top:9px;font-size:11px;font-weight:700;color:var(--text3)}
+.soft-tile{border:1px solid var(--line);border-radius:18px;background:var(--card-solid);overflow:hidden}
+.soft-tile summary{list-style:none;display:flex;align-items:center;gap:10px;padding:11px 12px;cursor:pointer}
+.soft-tile summary::-webkit-details-marker{display:none}
+.soft-tile .tn b{font-size:22px;font-weight:700}
+.soft-tile .tw2{margin-left:auto;font-size:12px;font-weight:650;color:var(--text2);background:var(--bg);border-radius:10px;padding:3px 9px}
+.soft-tile .tw2.ok{color:var(--ok);background:rgba(82,179,142,.12)}
+.soft-tile .plist{padding:0 12px 8px;max-height:220px}
+.toplist li{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.toplist li:first-child{border-top:0}
+.toplist button{all:unset;display:flex;align-items:center;gap:10px;width:100%;cursor:pointer;min-height:40px}
+.toplist .bar3{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden}.toplist .bar3 i{display:block;height:100%;background:var(--accent);border-radius:4px;opacity:.6}
+.heart-ill{font-size:40px;color:var(--accent);text-align:center;padding:14px 0}
+.linkcards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.linkcards button{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:14px 16px;text-align:left;display:flex;align-items:center;gap:12px;min-height:56px}
+.linkcards button b{display:block;font-size:15px}.linkcards button small{color:var(--text2);font-size:12.5px}
+.linkcards .ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);flex:none}
+@container desk (max-width:760px){.linkcards{grid-template-columns:1fr}.cc3{min-height:58px;padding:5px 4px 6px;border-radius:12px}.cc3 .dn b{font-size:14px}.cc3 .hn,.tot3,.cc3 .need{display:none}.cc3 .chips3 span{font-size:9px;padding:0 3px;border-radius:5px}}
+.cc3>*{flex-shrink:0}.cc3 .hn{margin-top:0;line-height:1.25}
 
 </style>
 </head>
@@ -841,21 +925,21 @@ const SND={on:true,ctx:null,
   play(kind,x){if(!this.on)return;try{const c=this.c();const t=c.currentTime+.01;
    const B=(f,d,dur,v)=>this.tone(f,t+d,dur||.07,v||.06,'sine');
    switch(kind){
-    case 'tap':B(1500,0,.03,.03);break;
-    case 'beep':{const f=700+Math.min(x||0,14)*28;B(f,0,.085,.07);break}            // bip da saturimetro, sale con le preferenze
-    case 'desel':B(820,0,.05,.05);B(620,.06,.06,.04);break;
-    case 'connect':B(988,0,.06,.06);B(1319,.09,.09,.06);break;                         // "monitor collegato"
-    case 'err':this.tone(330,t,.12,.05,'triangle');this.tone(262,t+.15,.16,.05,'triangle');break;
-    case 'drop':B(620,0,.05,.05);break;
-    case 'alarm':[0,.22,.44].forEach((d,i)=>this.tone([523.25,659.25,783.99][i],t+d,.17,.05,'square'));break;            // allarme a priorità media
-    case 'alarmHi':[0,.12,.24,.52,.64].forEach((d,i)=>this.tone([523.25,659.25,783.99,659.25,783.99][i],t+d,.1,.045,'square'));break; // allarme a priorità alta
-    case 'sheet':this.tone(500,t,.14,.03,'sine',900);break;
-    case 'whoosh':this.tone(300,t,.18,.02,'sine',700);break;
-    case 'charge':this.tone(260,t,.95,.035,'sine',2200);this.tone(130,t,.95,.012,'triangle',1100);break; // carica del defibrillatore
-    case 'shock':this.tone(90,t,.18,.12,'sine',40);this.tone(2400,t,.05,.02,'square');break;
-    case 'ok':[1046.5,1318.5,1568,2093].forEach((f,i)=>this.tone(f,t+i*.08,.45+i*.1,.055,'sine'));break;
-    case 'sinus':[0,.62,1.24].forEach(d=>B(880,d,.08,.06));break;                         // tre battiti
-    case 'on':B(880,.75,.09,.06);B(880,1.35,.09,.05);[523.25,784,1046.5].forEach((f,i)=>this.tone(f,t+1.55+i*.1,.8,.04,'sine'));break;
+    case 'tap':B(1320,0,.03,.02);break;
+    case 'beep':{const f=660+Math.min(x||0,14)*22;B(f,0,.09,.045);break}            // bip morbido da monitor, sale con le scelte
+    case 'desel':B(700,0,.06,.03);B(560,.07,.07,.025);break;
+    case 'connect':B(880,0,.07,.04);B(1175,.1,.1,.04);break;
+    case 'err':B(440,0,.12,.035);B(392,.14,.16,.03);break;
+    case 'drop':B(587,0,.05,.03);break;
+    case 'alarm':B(523.25,0,.14,.03);B(659.25,.16,.2,.03);break;                     // promemoria gentile, non un allarme
+    case 'alarmHi':B(392,0,.14,.035);B(349.2,.16,.22,.03);break;                    // «riprova», tono basso e breve
+    case 'sheet':this.tone(520,t,.16,.02,'sine',780);break;
+    case 'whoosh':this.tone(340,t,.2,.012,'sine',620);break;
+    case 'charge':this.tone(330,t,.9,.018,'sine',1320);break;                       // carica, sottovoce
+    case 'shock':this.tone(196,t,.25,.05,'sine',130);break;
+    case 'ok':[784,987.8,1174.7,1568].forEach((f,i)=>this.tone(f,t+i*.09,.5+i*.12,.035,'sine'));break;
+    case 'sinus':[0,.62,1.24].forEach(d=>B(784,d,.09,.04));break;                         // tre battiti
+    case 'on':B(784,.75,.1,.04);B(784,1.35,.1,.035);[523.25,659.25,784].forEach((f,i)=>this.tone(f,t+1.55+i*.12,.9,.028,'sine'));break;
    }}catch(e){}}};
 try{SND.on=localStorage.getItem('tdl-snd')!=='0'}catch(e){}
 const ICO_SND=on=>on?'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M15.5 9a4 4 0 010 6M18 6.5a7.5 7.5 0 010 11"/></svg>':'<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
@@ -864,7 +948,7 @@ function say(t){const l=document.getElementById('live');l.textContent='';setTime
 const RM=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 function rip(el){if(RM()||!el)return;const r=document.createElement('i');r.className='ripple';el.appendChild(r);setTimeout(()=>r.remove(),600)}
 /* ================= vibrazione ================= */
-const VIB={tap:6,beep:10,connect:[10,40,10],desel:8,drop:6,sheet:8,alarm:[80,60,80,60,80],alarmHi:[60,40,60,40,120],shock:45,ok:[15,40,15,40,30],charge:[20,80,20,80,20]};
+const VIB={tap:5,beep:8,connect:[8,40,8],desel:6,drop:5,sheet:6,alarm:[20,60,20],alarmHi:[30,50,30],shock:25,ok:[10,40,10,40,18],charge:[8,90,8]};
 function vib(k){if(!SND.on)return;const p=VIB[k];if(!p)return;try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}}
 (function(){const orig=SND.play.bind(SND);SND.play=function(k,x){vib(k);return orig(k,x)}})();
 
@@ -913,6 +997,7 @@ const IC_NEED='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" strok
 const IC_MORE='<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>';
 const IC_HELP='<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/></svg>';
 const IC_REFRESH='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/></svg>';
+const IC_HEART='<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.5C6 16.3 3 13 3 9.2 3 6.6 5 4.6 7.5 4.6c1.8 0 3.3 1 4.5 2.6 1.2-1.6 2.7-2.6 4.5-2.6C19 4.6 21 6.6 21 9.2c0 3.8-3 7.1-9 11.3z"/></svg>';
 
 /* ================= impronte dei codici ================= */
 const ALF='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
@@ -1012,7 +1097,9 @@ async function backendFirebase(cfg){
     salvaTotale:(mese,n)=>T(()=>F.setDoc(d('raccolte',mese,'pubblico','totale'),{totale:n,agg:F.serverTimestamp()}))
   }}
 
-async function apriBackend(){const cfg=window.TDL_CONFIG||{};const f=cfg.firebase||{};
+/* con ?prova nell'indirizzo il sito funziona in prova anche se Firebase è configurato: i dati restano nel browser */
+const IN_PROVA=/[?&]prova(=|&|$)/.test(location.search);
+async function apriBackend(){const cfg=window.TDL_CONFIG||{};const f=cfg.firebase||{};if(IN_PROVA)return backendProva();
   if(f.apiKey&&f.projectId&&!/INCOLLA/.test(f.apiKey))return backendFirebase(cfg);return backendProva()}
 
 /* ================= Excel: scrittura e lettura senza librerie esterne ================= */
@@ -1074,7 +1161,7 @@ async function leggiXlsx(file){const buf=new Uint8Array(await file.arrayBuffer()
 
 /* ================= gestione: stato e dati ================= */
 let BACK=null,IMPO=null,CROOT=null;
-const C={logged:false,vista:'calendario',mese:null,figura:'INF',nomi:false,cerca:'',aperta:null,cella:null,giorno:null,modal:null,
+const C={logged:false,vista:'calendario',mese:null,figura:'tutte',nomi:false,cerca:'',aperta:null,cella:null,giorno:null,modal:null,
   codici:[],risposte:{},need:{},carico:false,mob:false,ultimiCodici:null};
 const NOMI={};            // impronta breve -> {codice, nome}  (solo in memoria, dal Registro)
 const chi=h=>{const n=NOMI[breve(h)];if(n)return C.nomi&&n.nome?n.nome:fmtC(n.codice);return '#'+breve(h)};
@@ -1114,9 +1201,9 @@ function cSetup(){const pros=new Date();pros.setMonth(pros.getMonth()+1);const d
   <div class="field"><label for="su-mese">Primo mese da raccogliere</label><input id="su-mese" class="inp" type="month" value="${def}"></div>
   <button class="btn" data-c="setup">Crea la configurazione</button></div>`}
 
-const NAV=[['calendario','Calendario',I.cal,1],['risposte','Risposte',I.list,1],['coprire','Da coprire',IC_NEED,1],['codici','Codici',I.key,1],['mappa','Per turno',I.grid,0],['raccolte','Raccolte',I.cal,0],['impostazioni','Impostazioni',I.gear,1]];
+const NAV=[['calendario','Calendario',I.cal,1],['risposte','Risposte',I.list,1],['codici','Codici',I.key,1],['impostazioni','Impostazioni',I.gear,1]];
 function cSide(){const u=BACK.utente();const ore=new Date().getHours();const saluto=ore<13?'Buongiorno':ore<18?'Buon pomeriggio':'Buonasera';
-  return `<nav class="side" aria-label="Sezioni"><div class="brand">${LOGO}<div>turni iDEAli<small>Area di gestione</small></div></div><div class="figc">${FIG_COORD(54)}<div><b style="font-size:14px">${saluto}</b><small>${RACCOLTE.filter(r=>r.aperta).length} raccolte aperte</small></div></div>
+  return `<nav class="side" aria-label="Sezioni"><div class="brand">${LOGO}<div>turni iDEAli<small>Area di gestione</small></div></div><div class="figc">${FIG_COORD(54)}<div><b style="font-size:14px">${saluto}</b><small>${(n=>n===1?'1 raccolta aperta':n+' raccolte aperte')(RACCOLTE.filter(r=>r.aperta).length)}</small></div></div>
   ${NAV.map(([k,l,ic,m])=>`<button class="nav ${m?'':'desk-only'}" data-c="vista" data-k="${k}" ${C.vista===k?'aria-current="page"':''}><span class="ni">${ic}</span><span class="nl">${l}</span></button>`).join('')}
   <button class="nav desk-only" data-c="tour"><span class="ni">${IC_HELP}</span><span class="nl">Guida</span></button>
   <div class="who">${esc(u&&u.email||'')}${BACK.modo==='prova'?'<br><span class="st tm" style="display:inline-block;margin-top:6px">Modalità prova</span>':''}<br><button class="sbtn" style="margin-top:8px;height:34px" data-c="esci">Esci</button></div></nav>`}
@@ -1129,40 +1216,35 @@ function filtrate(){let L=risposte(C.mese);if(C.figura!=='tutte')L=L.filter(x=>x
 function conteggi(L){const cnt={};L.forEach(x=>x.voci.forEach((v,i)=>{(cnt[v.g+v.t]=cnt[v.g+v.t]||[]).push({c:x.c,p:v.l,tie:tieOf(x,i)})}));return cnt}
 const vuotoMese=()=>`<div class="box" style="text-align:center;padding:30px"><h3>Nessuna raccolta</h3><p class="sub">Crea la prima raccolta mensile.</p><button class="sbtn pri" data-c="nuova">+ Nuova raccolta</button></div>`;
 
-function cCalendario(){if(!C.mese)return cHead('Calendario')+vuotoMese();if(C.figura==='tutte')C.figura='INF';const fig=C.figura;const cnt=conteggi(filtrate());const giorni=giorniMese(C.mese);const first=(fromIso(giorni[0]).getDay()+6)%7;const crit=giorniCritici(C.mese);
-  const S2={};const tipo={M:{ok:0,n:0},P:{ok:0,n:0},N:{ok:0,n:0}};const attenz=[];let completi=0,valut=0;
-  crit.forEach(g=>{let tutti=true,alm=false;['M','P','N'].forEach(t=>{const p=(cnt[g+t]||[]).length;const m=daCoprire(C.mese,g,t,fig);const s=statoTurno(p,m);S2[g+t]={p,m,s};
-    if(m!==null&&m>0){alm=true;tipo[t].n++;if(p>=m)tipo[t].ok++}if(s.k==='bad'||s.k==='na')tutti=false;if(s.k==='bad')attenz.push({g,t,p,m})});if(alm){valut++;if(tutti)completi++}});
-  const maxF=Math.max(1,...giorni.map(g=>['M','P','N'].reduce((a,t)=>a+(cnt[g+t]||[]).length,0)));
-  const definiti=tipo.M.n+tipo.P.n+tipo.N.n;const pct=definiti?Math.round((tipo.M.ok+tipo.P.ok+tipo.N.ok)/definiti*100):null;
-  const all=risposte(C.mese);const att=Math.max(1,codiciAttivi().length);const resp=Math.round(all.length/att*100);C._bad=attenz.length;
-  const cells=giorni.map(g=>{const d=fromIso(g);const f=crit.includes(g);let bars,cls='';
-    if(f){const ks=['M','P','N'].map(t=>S2[g+t].s.k);cls=ks.includes('bad')?'st-bad':ks.includes('na')?'st-na':ks.every(k=>k==='zero')?'':'st-ok';
-      bars=['M','P','N'].map(t=>{const x=S2[g+t];const w=x.m===null?100:x.m===0?0:Math.min(100,Math.round(x.p/x.m*100));return `<div class="bb ${x.s.k}"><span>${t}</span><i><b style="width:${w}%"></b></i></div>`}).join('')}
-    else bars=['M','P','N'].map(t=>{const p=(cnt[g+t]||[]).length;return `<div class="bb pl"><span>${t}</span><i><b style="width:${Math.min(100,Math.round(p/maxF*300))}%"></b></i></div>`}).join('');
-    const lab=f?['M','P','N'].map(t=>`${TURNI[t].nome} ${S2[g+t].p} offerti su ${S2[g+t].m===null?'da definire':S2[g+t].m} da coprire, ${STW[S2[g+t].s.k]}`).join('; '):['M','P','N'].map(t=>`${TURNI[t].nome} ${(cnt[g+t]||[]).length}`).join(', ');
-    return `<button class="cc2 ${f?'crit':''} ${cls} ${C.giorno===g?'sel':''}" data-c="giorno" data-k="${g}" aria-label="${GGL[d.getDay()]} ${d.getDate()}${FEST[g]?', '+FEST[g]:''}. ${lab}" style="animation-delay:${(first+d.getDate())*12}ms">
-     <div class="dn"><b>${d.getDate()}</b>${cls==='st-ok'?'<span class="medal" aria-hidden="true">★</span>':''}${cls==='st-bad'?'<span class="alm" aria-hidden="true"></span>':''}</div>
-     ${FEST[g]?`<small class="hn">${FEST[g]}</small>`:f&&!isFest(g)?'<small class="hn">Critico</small>':''}<div class="bars">${bars}</div></button>`}).join('');
+function needSum(key,g,t,fig){if(fig!=='tutte')return daCoprire(key,g,t,fig);const a=daCoprire(key,g,t,'INF'),b=daCoprire(key,g,t,'OSS');if(a===null&&b===null)return null;return (a||0)+(b||0)}
+function cCalendario(){if(!C.mese)return cHead('Calendario')+vuotoMese();const fig=C.figura;const L=filtrate();const cnt=conteggi(L);const giorni=giorniMese(C.mese);const first=(fromIso(giorni[0]).getDay()+6)%7;
+  const tot=g=>['M','P','N'].reduce((a,t)=>a+(cnt[g+t]||[]).length,0);const maxF=Math.max(1,...giorni.map(tot));
+  const all=risposte(C.mese);const att=Math.max(1,codiciAttivi().length);const resp=Math.round(all.length/att*100);
+  const offerti=L.reduce((a,x)=>a+x.voci.length,0),massimo=L.reduce((a,x)=>a+(x.disp||0),0);
+  const cells=giorni.map(g=>{const d=fromIso(g);const n=tot(g);const f=isFest(g);const al=n/maxF;
+    const needs=['M','P','N'].map(t=>needSum(C.mese,g,t,fig)).filter(v=>v!==null&&v>0);const servono=needs.reduce((a,b)=>a+b,0);
+    const okNeed=servono>0&&['M','P','N'].every(t=>{const m=needSum(C.mese,g,t,fig);return m===null||m===0||(cnt[g+t]||[]).length>=m});
+    return `<button class="cc3 ${f?'fest':''} ${C.giorno===g?'sel':''}" data-c="giorno" data-k="${g}" style="background:${n?`color-mix(in srgb,var(--accent) ${Math.round(6+al*22)}%,var(--card-solid))`:'var(--card-solid)'};animation-delay:${(first+d.getDate())*10}ms"
+      aria-label="${GGL[d.getDay()]} ${d.getDate()}${FEST[g]?', '+FEST[g]:''}: ${n} disponibilità${servono?', ne servono '+servono:''}">
+     <div class="dn"><b>${d.getDate()}</b>${n?`<span class="tot3">${n}</span>`:''}</div>${FEST[g]?`<small class="hn">${FEST[g]}</small>`:''}
+     ${servono?`<small class="need ${okNeed?'ok':''}">${okNeed?'✓ ':''}servono ${servono}</small>`:''}
+     <div class="chips3">${['M','P','N'].filter(t=>(cnt[g+t]||[]).length).map(t=>`<span style="background:${TURNI[t].c}">${t} ${(cnt[g+t]||[]).length}</span>`).join('')}</div></button>`}).join('');
   let side;
-  if(C.giorno){const g=C.giorno;const d=fromIso(g);const f=crit.includes(g);
-    side=`<div class="grab mob-only" aria-hidden="true"></div><div class="ph"><button class="ibtn" data-c="giorno" data-k="${g}" aria-label="Chiudi dettaglio">${I.back}</button><div><h4>${cap(GGL[d.getDay()])} ${d.getDate()} ${MESI[d.getMonth()].slice(0,3)}</h4><div class="sub">${FEST[g]||(fig==='INF'?'Infermieri':'OSS')}</div></div></div>
-    <div class="tiles">${['M','P','N'].map(t=>{const a=(cnt[g+t]||[]).slice().sort((x,y)=>x.p-y.p);const m=daCoprire(C.mese,g,t,fig);const s=f?statoTurno(a.length,m):{k:'pl'};const w=m?Math.min(100,a.length/m*100):100;
-      return `<details class="tile ${s.k}"><summary><span class="tk" style="background:${TURNI[t].c}">${t}</span><span class="tn"><b>${a.length}</b>${f?`<small>/${m===null?'?':m}</small>`:''}</span>${f?`<span class="tw">${STW[s.k]}</span>`:''}<i class="tb"><b style="width:${w}%"></b></i></summary>
-       <ul class="plist">${a.map(x=>`<li><span class="mono">${esc(chi(x.c))}</span><b>${x.p}ª${x.tie?' =':''}</b></li>`).join('')||'<li style="color:var(--text3)">Nessuno</li>'}</ul></details>`}).join('')}</div>
-    ${f?'':`<button class="sbtn" style="width:100%;margin-top:10px" data-c="addcrit" data-k="${g}">${IC_NEED} Segna turni da coprire</button>`}`}
-  else side=`<div class="ph"><span class="bell ${attenz.length?'on':''}" aria-hidden="true">${I.rep.replace('<path d="M3 3l18 18"/>','')}</span><div><h4>Da attenzionare</h4><div class="sub">${attenz.length?attenz.length+' turni con poche disponibilità':pct===null?'Segna i turni da coprire':'Tutto tranquillo'}</div></div></div>
-    ${attenz.length?`<ul class="plist att">${attenz.map(x=>`<li><button data-c="giorno" data-k="${x.g}"><span class="tk" style="background:${TURNI[x.t].c}">${x.t}</span><span><b>${cap(dataBreve(x.g))}</b></span><span class="mono" style="color:var(--danger)">${x.p}/${x.m}</span></button></li>`).join('')}</ul>`:pct===null?`<button class="sbtn pri" style="width:100%;margin-top:8px" data-c="vista" data-k="coprire">Segna i turni da coprire</button>`:'<div class="calm">✓</div>'}`;
-  return `<div class="mhead"><h2>Calendario</h2>${selMese()}${R(C.mese).critico?`<span class="st tm">${TEMI[R(C.mese).tema].nome}</span>`:''}<div class="spacer"></div>${figSeg(false)}
-    <button class="sbtn icon" data-c="export" data-k="xlsx" aria-label="Esporta in Excel">${I.dl}</button><button class="sbtn icon" data-c="ricarica" aria-label="Aggiorna">${IC_REFRESH}</button><button class="sbtn icon mob-only" data-c="tour" aria-label="Guida">${IC_HELP}</button></div>
+  if(C.giorno){const g=C.giorno;const d=fromIso(g);
+    side=`<div class="grab mob-only" aria-hidden="true"></div><div class="ph"><button class="ibtn" data-c="giorno" data-k="${g}" aria-label="Chiudi">${I.back}</button><div><h4>${cap(GGL[d.getDay()])} ${d.getDate()} ${MESI[d.getMonth()]}</h4><div class="sub">${FEST[g]||(fig==='tutte'?'Tutte le figure':fig==='INF'?'Infermieri':'OSS')}</div></div></div>
+    <div class="tiles">${['M','P','N'].map(t=>{const a=(cnt[g+t]||[]).slice().sort((x,y)=>x.p-y.p);const m=needSum(C.mese,g,t,fig);
+      return `<details class="soft-tile" ${a.length?'open':''}><summary><span class="tk" style="background:${TURNI[t].c}">${t}</span><span class="tn"><b>${a.length}</b></span><span style="color:var(--text2);font-size:13px">${TURNI[t].nome}</span>${m?`<span class="tw2 ${a.length>=m?'ok':''}">${a.length>=m?'✓ ':''}servono ${m}</span>`:''}</summary>
+       <ul class="plist">${a.map(x=>`<li><span class="mono">${esc(chi(x.c))}</span><b>${x.p}ª${x.tie?' =':''}</b></li>`).join('')||'<li style="color:var(--text3)">Ancora nessuno</li>'}</ul></details>`}).join('')}</div>`}
+  else{const top=giorni.map(g=>({g,n:tot(g)})).filter(x=>x.n).sort((a,b)=>b.n-a.n).slice(0,6);
+    side=`<div class="ph"><span class="bell" aria-hidden="true">${IC_HEART}</span><div><h4>Più disponibilità</h4><div class="sub">${top.length?'Tocca un giorno per vedere chi':'Ancora nessuna risposta'}</div></div></div>
+    ${top.length?`<ul class="plist toplist">${top.map(x=>`<li><button data-c="giorno" data-k="${x.g}"><b style="width:86px">${cap(dataBreve(x.g))}</b><span class="bar3"><i style="width:${Math.round(x.n/maxF*100)}%"></i></span><b>${x.n}</b></button></li>`).join('')}</ul>`:'<div class="heart-ill">♡</div>'}`}
+  return `<div class="mhead"><h2>Calendario</h2>${selMese()}${R(C.mese).critico?`<span class="st tm">${TEMI[R(C.mese).tema].nome}</span>`:''}<div class="spacer"></div>${figSeg(true)}
+    <button class="sbtn icon" data-c="export" data-k="xlsx" aria-label="Scarica in Excel">${I.dl}</button><button class="sbtn icon" data-c="ricarica" aria-label="Aggiorna">${IC_REFRESH}</button><button class="sbtn icon mob-only" data-c="tour" aria-label="Guida">${IC_HELP}</button></div>
   <div class="glance">
-   <div class="gcard g-rings"><div class="rings">${ring([{p:tipo.M.n?tipo.M.ok/tipo.M.n:null,c:'var(--m)'},{p:tipo.P.n?tipo.P.ok/tipo.P.n:null,c:'var(--p)'},{p:tipo.N.n?tipo.N.ok/tipo.N.n:null,c:'var(--n)'}],96)}<span class="rc">${pct===null?'?':pct+'%'}</span></div>
-     <div><small>Turni coperti</small><div class="rl"><span><i style="background:var(--m)"></i>M ${tipo.M.n?tipo.M.ok+'/'+tipo.M.n:'?'}</span><span><i style="background:var(--p)"></i>P ${tipo.P.n?tipo.P.ok+'/'+tipo.P.n:'?'}</span><span><i style="background:var(--n)"></i>N ${tipo.N.n?tipo.N.ok+'/'+tipo.N.n:'?'}</span></div></div></div>
    <div class="gcard"><div class="rings">${ring([{p:all.length/att,c:'var(--accent)'}],96)}<span class="rc">${resp}%</span></div><div><small>Hanno risposto</small><b class="gb">${all.length}<em>/${codiciAttivi().length}</em></b></div></div>
-   <div class="gcard"><div class="trophy ${completi?'won':''}" aria-hidden="true">★</div><div><small>Giorni completi</small><b class="gb">${completi}<em>/${valut||crit.length}</em></b><div class="medals">${crit.map(g=>{const ks=['M','P','N'].map(t=>S2[g+t].s.k);const ok=!ks.includes('bad')&&!ks.includes('na')&&!ks.every(k=>k==='zero');return `<i class="${ok?'on':''}" title="${dataBreve(g)}"></i>`}).join('')}</div></div></div>
-   <div class="gcard ${attenz.length?'alarmc':''}"><div class="bigalarm" aria-hidden="true">!</div><div><small>Turni scoperti</small><b class="gb">${pct===null?'?':attenz.length}</b></div></div>
+   <div class="gcard"><div class="trophy won" aria-hidden="true" style="animation:none">${IC_HEART}</div><div><small>Turni offerti</small><b class="gb">${offerti}</b></div></div>
+   <div class="gcard"><div class="bigalarm" aria-hidden="true" style="background:var(--accent-soft);color:var(--accent);font-size:20px">≤</div><div><small>Al massimo, insieme</small><b class="gb">${massimo}<em> turni</em></b></div></div>
   </div>
-  <div class="leg2"><span><i class="lv bad"></i>Pochi</span><span><i class="lv warn"></i>Giusti</span><span><i class="lv ok"></i>Tanti</span><span><i class="lv"></i>Da definire</span><button class="info" data-c="infocal" aria-label="Come si legge">i</button></div>
   <div class="split cal-split"><div class="box calbox"><div class="ccal">${['L','M','M','G','V','S','D'].map(x=>`<div class="wd">${x}</div>`).join('')}${'<div></div>'.repeat(first)}${cells}</div></div>
   ${C.giorno?'<div class="psheet-bg mob-only" data-c="giorno" data-k="'+C.giorno+'"></div>':''}<aside class="panel ${C.giorno?'has-day':''}" aria-live="polite">${side}</aside></div>`}
 
@@ -1170,14 +1252,14 @@ function cCoprire(){if(!C.mese)return cHead('Turni da coprire')+vuotoMese();cons
   const row=g=>{const x=N.giorni[g];const d=fromIso(g);return `<div class="nrow"><div class="nday"><b>${cap(dataBreve(g))}</b><small>${FEST[g]||(d.getDay()===0?'Domenica':'Giorno aggiunto')}</small></div>
     ${['M','P','N'].map(t=>`<div class="ncell"><span class="tk" style="background:${TURNI[t].c}">${t}</span>${['INF','OSS'].map(f=>`<label><small>${f}</small><input inputmode="numeric" data-c="needin" data-g="${g}" data-t="${t}" data-f="${f}" value="${esc((x[t]||{})[f]??'?')}" aria-label="${dataBreve(g)} ${TURNI[t].nome} ${f}"></label>`).join('')}</div>`).join('')}
     <button class="ibtn" data-c="rimcrit" data-k="${g}" aria-label="Togli ${dataBreve(g)}">${I.trash}</button></div>`};
-  return `${cHead('Turni da coprire','<button class="sbtn pri" data-c="salvaneed">Salva</button>')}
-  <p class="intro2">Per ogni giorno, quanti turni restano scoperti per le aspettative, per figura. Li vedi solo tu. Lascia «?» se non lo sai ancora.</p>
+  return `${cHead('Turni da coprire','<button class="sbtn" data-c="vista" data-k="impostazioni">Indietro</button><button class="sbtn pri" data-c="salvaneed">Salva</button>')}
+  <p class="intro2"><b>Facoltativo.</b> Se vuoi, per qualche giorno indica quanti turni servirebbero: nel calendario comparirà «servono N» e una spunta quando ci sono abbastanza disponibilità. Lascia «?» dove non serve. Lo vedi solo tu.</p>
   <div class="box nbox">${crit.map(row).join('')||'<p class="sub">Nessun giorno. Aggiungi qui sotto i giorni con turni scoperti, oppure usa «Festivi del mese».</p>'}</div>
   <div class="addrow"><select class="sel" id="addg">${altri.map(g=>`<option value="${g}">${cap(dataBreve(g))}</option>`).join('')}</select><button class="sbtn" data-c="addcrit">+ Aggiungi giorno</button><button class="sbtn" data-c="addfest">+ Festivi del mese</button></div>`}
 
 function cRaccolte(){const att=Math.max(1,codiciAttivi().length);
-  return `${cHead('Raccolte','<button class="sbtn pri" data-c="nuova">+ Nuova</button>')}
-  <p class="intro2">Una raccolta per mese, aperta fino a sei mesi prima. Di norma chiude il 10 del mese precedente.</p>
+  return `${cHead('Mesi','<button class="sbtn" data-c="vista" data-k="impostazioni">Indietro</button><button class="sbtn pri" data-c="nuova">+ Nuovo mese</button>')}
+  <p class="intro2">Ogni mese ha la sua raccolta, che si può aprire fino a sei mesi prima. Di norma chiude il 10 del mese precedente.</p>
   <div class="rcards">${RACCOLTE.slice().reverse().map(r=>{const n=(C.risposte[r.key]||[]).length;const cc=countdown(r.chiusura);
    return `<button class="rcard ${r.tema!=='standard'?'tema-'+r.tema:''}" data-c="apri" data-k="${r.key}"><b>${labMese(r.key)}</b>${r.tema!=='standard'?`<span class="mtag">${TEMI[r.tema].nome}</span>`:''}
     <div class="meta">Chiude il ${r.chiusura.getDate()} ${MESI[r.chiusura.getMonth()]}${r.chiusura>new Date()?' · tra '+cc.g+' giorni':' · scaduta'}</div>
@@ -1241,7 +1323,8 @@ function cCodici(){const att=codiciAttivi();const inf=att.filter(c=>c.figura==='
 function cImpostazioni(){const r=R(C.mese);if(!r)return cHead('Impostazioni')+vuotoMese();const giorni=giorniMese(C.mese);const first=(fromIso(giorni[0]).getDay()+6)%7;
   const dd=r.chiusura;const dval=dd.getFullYear()+'-'+pad(dd.getMonth()+1)+'-'+pad(dd.getDate())+'T'+pad(dd.getHours())+':'+pad(dd.getMinutes());const fm=r.festivi||{};
   return `${cHead('Impostazioni',`<button class="sbtn pri" data-c="salva">Salva</button>`)}
-  <div class="mob-only linkrow"><button class="sbtn" data-c="vista" data-k="raccolte">${I.cal} Raccolte</button><button class="sbtn" data-c="vista" data-k="mappa">${I.grid} Per turno</button><button class="sbtn" data-c="esci">Esci</button></div>
+  <div class="linkcards"><button data-c="vista" data-k="raccolte"><span class="ic">${I.cal}</span><span><b>Mesi</b><small>Apri un nuovo mese, chiudi o riapri</small></span></button><button data-c="vista" data-k="coprire"><span class="ic">${IC_NEED}</span><span><b>Turni da coprire</b><small>Facoltativo: quanti ne servono per giorno</small></span></button></div>
+  <div class="mob-only linkrow"><button class="sbtn" data-c="esci">Esci</button></div>
   <div class="box"><h3>Raccolta di ${labMese(C.mese).toLowerCase()}</h3><div class="form">
    <div class="field full"><label for="im-tit">Titolo</label><input id="im-tit" class="inp" value="${esc(r.titolo)}" maxlength="80"></div>
    <div class="field"><label for="im-ch">Chiusura</label><input id="im-ch" class="inp" type="datetime-local" value="${dval}"><small style="color:var(--text2);font-size:12px">Di norma il 10 del mese precedente.</small></div>
@@ -1268,17 +1351,15 @@ function vCoord(){
   return `<div class="desk ${C.mob?'mob':''} ${r&&r.tema!=='standard'?'tema-'+r.tema:''}"><div class="adm">${cSide()}<section class="main" data-v="${C.vista}">${V()}</section></div>${cModal()}</div>`}
 
 const TOUR_GEST=[
- {sel:'.glance',t:'A colpo d\'occhio',d:'Turni coperti, risposte arrivate, giorni completi e turni ancora scoperti.'},
- {sel:'.calbox',t:'Il calendario',d:'Ogni giorno ha tre barre: Mattina, Pomeriggio, Notte. Rosso pochi, giallo giusti, verde tanti.'},
- {sel:'.panel',t:'Da attenzionare',d:'Qui trovi i turni con poche disponibilità. Tocca un giorno per vedere chi si è offerto.'},
- {sel:'.seg',t:'Infermieri e OSS',d:'Il calendario si legge per una figura alla volta.'},
- {sel:'[data-k="coprire"]',t:'Turni da coprire',d:'Segna quanti turni restano scoperti in ogni giorno: il calendario li confronta con le disponibilità.'},
- {sel:'[data-k="xlsx"]',t:'Esporta per il Registro',d:'Scarica l\'Excel anonimo e incollalo nel Registro sul tuo computer: i nomi compaiono da soli.'}];
+ {sel:'.glance',t:'In breve',d:'Quante persone hanno risposto e quanti turni sono stati offerti in tutto.'},
+ {sel:'.calbox',t:'Il calendario',d:'Ogni giorno mostra le disponibilità per Mattina, Pomeriggio e Notte. Più il colore è intenso, più disponibilità ci sono.'},
+ {sel:'.panel',t:'Chi si è offerto',d:'Tocca un giorno: qui compaiono i turni e chi li ha offerti, in ordine di preferenza.'},
+ {sel:'.seg',t:'Figure',d:'Puoi guardare tutti insieme, solo gli infermieri o solo gli OSS.'},
+ {sel:'[data-k="xlsx"]',t:'Excel',d:'Scarica il file anonimo e incollalo nel Registro sul tuo computer: i nomi compaiono da soli.'}];
 function tourGest(force){const host=CROOT&&CROOT.querySelector('.desk');if(!host||C.vista!=='calendario'||!C.mese)return;tour(host,'g'+(C.mob?'m':''),TOUR_GEST,force)}
 
 function drawCoord(){const st=CROOT;if(!st)return;const prev=C._v;const scr=st.querySelector('.desk');const y=C.mob&&scr?scr.scrollTop:window.scrollY;st.innerHTML=vCoord();C._v=C.vista+C.mese+C.figura;
   if(prev===C._v){const nd=st.querySelector('.desk');if(C.mob&&nd)nd.scrollTop=y;else window.scrollTo(0,y)}
-  if(prev!==C._v&&C.vista==='calendario'&&C.carico&&C._bad)setTimeout(()=>SND.play('alarm'),350);
   if(prev!==C._v&&!RM())st.querySelectorAll('.kpi b,.gb').forEach(el=>{const to=parseInt(el.textContent);if(isNaN(to)||to<2)return;const t0=performance.now();const f=t=>{const p=Math.min(1,(t-t0)/700);el.firstChild.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)});
   const lf=st.querySelector('#lf');if(lf)lf.addEventListener('submit',async e=>{e.preventDefault();const em=st.querySelector('#em').value.trim(),pw=st.querySelector('#pw').value;const btn=lf.querySelector('.btn');btn.disabled=true;
     try{await BACK.accedi(em,pw)}catch(er){btn.disabled=false;st.querySelector('#lerr').textContent=er.message||MSG.login;SND.play('alarmHi');const f=st.querySelector('.login form');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake')}});
@@ -1308,7 +1389,7 @@ async function leggiRegistro(file){const fogli=await leggiXlsx(file);const sh=fo
 /* ================= azioni ================= */
 async function onCoordClick(e){const b=e.target.closest('[data-c]');if(!b||!CROOT||!CROOT.contains(b))return;const a=b.dataset.c,k=b.dataset.k;
   if(['mese','cerca','needin'].includes(a))return;
-  if(a==='giorno'&&b.classList.contains('cc2'))rip(b);
+  if(a==='giorno'&&b.classList.contains('cc3'))rip(b);
   if(!['chiudi','fest','giorno'].includes(a))SND.play('tap');
   if(a==='vista'){if(C._needDirty&&C.vista==='coprire')await salvaNeed(true);C.vista=k;C.cella=null;C.giorno=null}
   else if(a==='tour'){if(C.vista!=='calendario'){C.vista='calendario';drawCoord()}setTimeout(()=>tourGest(true),200);return}
@@ -1320,7 +1401,7 @@ async function onCoordClick(e){const b=e.target.closest('[data-c]');if(!b||!CROO
   else if(a==='fig'){C.figura=k}
   else if(a==='riga'){C.aperta=C.aperta===k?null:k}
   else if(a==='cella'){C.cella=C.cella===k?null:k}
-  else if(a==='giorno'){C.giorno=C.giorno===k?null:k;if(C.giorno){if(b.classList.contains('st-bad'))SND.play('alarm');else if(b.classList.contains('st-ok'))SND.play('ok');else SND.play('sheet')}else SND.play('desel')}
+  else if(a==='giorno'){C.giorno=C.giorno===k?null:k;SND.play(C.giorno?'sheet':'desel')}
   else if(a==='infocal'){C.modal='<h3>Come si legge</h3><p style="color:var(--text2);font-size:14px">Nei giorni con turni da coprire ogni barra confronta le disponibilità con i turni scoperti. <b>Pochi</b>: meno di quelli da coprire. <b>Giusti</b>: fino a una volta e mezzo. <b>Tanti</b>: oltre. La stella indica un giorno completo. Negli altri giorni la barra grigia mostra solo quante disponibilità ci sono. Le disponibilità non sono turni assegnati.</p>'}
   else if(a==='nomi'){C.modal=`<h3>Carica il Registro</h3><p style="color:var(--text2);font-size:14px">Scegli il Registro Excel dal tuo computer. Codici e nomi restano in questa pagina e non vengono inviati al server. Quando chiudi la pagina spariscono.</p>
      <input type="file" accept=".xlsx" class="inp" style="padding:10px;height:auto" id="regfile"><p class="lerr" id="regerr"></p>`;drawCoord();
